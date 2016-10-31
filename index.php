@@ -16,21 +16,17 @@ class  IdxService extends RestfulServer {
 		echo '<!DOCTYPE html>
 		<html lang="en">
 		<head>
-
 			<meta charset="utf-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-
 			<title>PHP CRUD with ReactJS</title>
-
 			<!-- Bootstrap CSS -->
 			<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-
 			<!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 			<!-- WARNING: Respond.js doesn\'t work if you view the page via file:// -->
 			<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+			<script src="/js/html5shiv.js"></script>
+			<script src="/js/respond.min.js"></script>
 			<![endif]-->
 
 			<style>
@@ -63,16 +59,14 @@ class  IdxService extends RestfulServer {
 				<div class="page-header">
 					<h1>Loading...</h1>
 				</div>
-				'.'        
 				<div id="content"></div>
-				'.'
 			</div>
 			<!-- /container -->
 
 			<!-- react js -->
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+			<script src="/js/react.js"></script>
+			<script src="/js/react-dom.js"></script>
+			<script src="/js/babel.js"></script>
 
 			<!-- main react components -->
 			<script type="text/babel" src="js/react/main.js"></script>
@@ -155,7 +149,7 @@ class  IdxService extends RestfulServer {
 		 				// $product->category_name = 'category_name'.$i;
 	 				//---------dummy----------------
 	 				//----- db -----------------
-	 					$product = Capsule::select('SELECT categories.`name` AS category_name, products.id, products.`name`, products.description, products.price FROM products INNER JOIN categories ON categories.id = products.category_id
+	 					$product = Capsule::select('SELECT categories.`name` AS category_name, products.id, products.`name`, products.description, products.price,category_id FROM products INNER JOIN categories ON categories.id = products.category_id
 							where products.id =  ? ',[$i])[0];
 	 				//----- db -----------------
 

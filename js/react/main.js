@@ -40,176 +40,177 @@ var DeleteProductComponent = React.createClass({
 });
 
 var UpdateProductComponent = React.createClass({
- getInitialState: function() {
-    return {
-        categories: [],
-        selectedCategoryId: 0,
-        id: 0,
-        name: '',
-        description: '',
-        price: 0,
-        successUpdate: null
-    };
-},
-componentDidMount: function() {
-    this.serverRequestCat = $.get("/allcats", function (data) {
-        this.setState({
-            categories: data.data.cats
-        });
-    }.bind(this));
- 
-    var productId = this.props.productId;
-    this.serverRequestProd = $.post("/productbyone",
-        {prod_id: productId},
-        function (data) {
-            var p = data.data.product;
-            this.setState({selectedCategoryId: p.category_id});
-            this.setState({id: p.id});
-            this.setState({name: p.name});
-            this.setState({description: p.description});
-            this.setState({price: p.price});
-        }.bind(this));
- 
-    $('.page-header h1').text('Update product');
-},
-componentWillUnmount: function() {
-    this.serverRequestCat.abort();
-    this.serverRequestProd.abort();
-},
-// handle category change
-onCategoryChange: function(e) {
-    this.setState({selectedCategoryId: e.target.value});
-},
- 
-// handle name change
-onNameChange: function(e) {
-    this.setState({name: e.target.value});
-},
- 
+ 	getInitialState: function() {
+	    return {
+	        categories: [],
+	        selectedCategoryId: 0,
+	        id: 0,
+	        name: '',
+	        description: '',
+	        price: 0,
+	        successUpdate: null
+	    };
+	},
+	componentDidMount: function() {
+	    this.serverRequestCat = $.get("/allcats", function (data) {
+	        this.setState({
+	            categories: data.data.cats
+	        });
+	    }.bind(this));
+	 
+	    var productId = this.props.productId;
+	    this.serverRequestProd = $.post("/productbyone",
+	        {prod_id: productId},
+	        function (data) {
+	            var p = data.data.product;
+	            console.log(p);
+	            this.setState({selectedCategoryId: p.category_id});
+	            this.setState({id: p.id});
+	            this.setState({name: p.name});
+	            this.setState({description: p.description});
+	            this.setState({price: p.price});
+	        }.bind(this));
+	 
+	    $('.page-header h1').text('Update product');
+	},
+	componentWillUnmount: function() {
+	    this.serverRequestCat.abort();
+	    this.serverRequestProd.abort();
+	},
+	// handle category change
+	onCategoryChange: function(e) {
+	    this.setState({selectedCategoryId: e.target.value});
+	},
+	 
+	// handle name change
+	onNameChange: function(e) {
+	    this.setState({name: e.target.value});
+	},
+	 
 
-// handle description change
-onDescriptionChange: function(e) {
-    this.setState({description: e.target.value});
-},
- 
-// handle price change
-onPriceChange: function(e) {
-    this.setState({price: e.target.value});
-},
+	// handle description change
+	onDescriptionChange: function(e) {
+	    this.setState({description: e.target.value});
+	},
+	 
+	// handle price change
+	onPriceChange: function(e) {
+	    this.setState({price: e.target.value});
+	},
 
-onSave: function(e){
-    $.post("/updateproduct", {
-            id: this.state.id,
-            name: this.state.name,
-            description: this.state.description,
-            price: this.state.price,
-            category_id: this.state.selectedCategoryId
-        },
-        function(res){
-            this.setState({successUpdate: res});
-        }.bind(this)
-    );
-    e.preventDefault();
-},
-render: function() {
-    var categoriesOptions = this.state.categories.map(function(category){
-        return (
-            <option key={category.id} value={category.id}>{category.name}</option>
-        );
-    });
- 
-    return (
-        <div>
-            {
-                this.state.successUpdate == "true" ?
-                    <div className='alert alert-success'>
-                        Product was updated.
-                    </div>
-                : null
-            }
- 
-            {
-                this.state.successUpdate == "false" ?
-                    <div className='alert alert-danger'>
-                        Unable to update product. Please try again.
-                    </div>
-                : null
-            }
- 
-            <a href='#'
-                onClick={() => this.props.changeAppMode('read')}
-                className='btn btn-primary margin-bottom-1em'>
-                Read Products
-            </a>
- 
-            <form onSubmit={this.onSave}>
-                <table className='table table-bordered table-hover'>
-                    <tbody>
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            <input
-                                type='text'
-                                className='form-control'
-                                value={this.state.name}
-                                required
-                                onChange={this.onNameChange} />
-                        </td>
-                    </tr>
- 
-                    <tr>
-                        <td>Description</td>
-                        <td>
-                            <textarea
-                                type='text'
-                                className='form-control'
-                                required
-                                value={this.state.description}
-                                onChange={this.onDescriptionChange}></textarea>
-                        </td>
-                    </tr>
- 
-                    <tr>
-                        <td>Price ($)</td>
-                        <td>
-                            <input
-                                type='number'
-                                step="0.01"
-                                className='form-control'
-                                value={this.state.price}
-                                required
-                                onChange={this.onPriceChange}/>
-                        </td>
-                    </tr>
- 
-                    <tr>
-                        <td>Category</td>
-                        <td>
-                            <select
-                                onChange={this.onCategoryChange}
-                                className='form-control'
-                                value={this.state.selectedCategoryId}>
-                                <option value="-1">Select category...</option>
-                                {categoriesOptions}
-                                </select>
-                        </td>
-                    </tr>
- 
-                    <tr>
-                        <td></td>
-                        <td>
-                            <button
-                                className='btn btn-primary'
-                                onClick={this.onSave}>Save Changes</button>
-                        </td>
-                    </tr>
- 
-                    </tbody>
-                </table>
-            </form>
-        </div>
-    );
-}
+	onSave: function(e){
+	    $.post("/updateproduct", {
+	            id: this.state.id,
+	            name: this.state.name,
+	            description: this.state.description,
+	            price: this.state.price,
+	            category_id: this.state.selectedCategoryId
+	        },
+	        function(res){
+	            this.setState({successUpdate: res});
+	        }.bind(this)
+	    );
+	    e.preventDefault();
+	},
+	render: function() {
+	    var categoriesOptions = this.state.categories.map(function(category){
+	        return (
+	            <option key={category.id} value={category.id}>{category.name}</option>
+	        );
+	    });
+	 
+	    return (
+	        <div>
+	            {
+	                this.state.successUpdate == "true" ?
+	                    <div className='alert alert-success'>
+	                        Product was updated.
+	                    </div>
+	                : null
+	            }
+	 
+	            {
+	                this.state.successUpdate == "false" ?
+	                    <div className='alert alert-danger'>
+	                        Unable to update product. Please try again.
+	                    </div>
+	                : null
+	            }
+	 
+	            <a href='#'
+	                onClick={() => this.props.changeAppMode('read')}
+	                className='btn btn-primary margin-bottom-1em'>
+	                Read Products
+	            </a>
+	 
+	            <form onSubmit={this.onSave}>
+	                <table className='table table-bordered table-hover'>
+	                    <tbody>
+	                    <tr>
+	                        <td>Name</td>
+	                        <td>
+	                            <input
+	                                type='text'
+	                                className='form-control'
+	                                value={this.state.name}
+	                                required
+	                                onChange={this.onNameChange} />
+	                        </td>
+	                    </tr>
+	 
+	                    <tr>
+	                        <td>Description</td>
+	                        <td>
+	                            <textarea
+	                                type='text'
+	                                className='form-control'
+	                                required
+	                                value={this.state.description}
+	                                onChange={this.onDescriptionChange}></textarea>
+	                        </td>
+	                    </tr>
+	 
+	                    <tr>
+	                        <td>Price ($)</td>
+	                        <td>
+	                            <input
+	                                type='number'
+	                                step="0.01"
+	                                className='form-control'
+	                                value={this.state.price}
+	                                required
+	                                onChange={this.onPriceChange}/>
+	                        </td>
+	                    </tr>
+	 
+	                    <tr>
+	                        <td>Category</td>
+	                        <td>
+	                            <select
+	                                onChange={this.onCategoryChange}
+	                                className='form-control'
+	                                value={this.state.selectedCategoryId}>
+	                                <option value="-1">Select category...</option>
+	                                {categoriesOptions}
+	                                </select>
+	                        </td>
+	                    </tr>
+	 
+	                    <tr>
+	                        <td></td>
+	                        <td>
+	                            <button
+	                                className='btn btn-primary'
+	                                onClick={this.onSave}>Save Changes</button>
+	                        </td>
+	                    </tr>
+	 
+	                    </tbody>
+	                </table>
+	            </form>
+	        </div>
+	    );
+	}
 });
 
 var ReadOneProductComponent = React.createClass({
@@ -314,153 +315,153 @@ var CreateProductComponent = React.createClass({
 		$('.page-header h1').text('Create product');
 	},
 	componentWillUnmount: function() {
-    this.serverRequest.abort();
-},
-// handle category change
-onCategoryChange: function(e) {
-    this.setState({selectedCategoryId: e.target.value});
-},
- 
-// handle name change
-onNameChange: function(e) {
-    this.setState({name: e.target.value});
-},
- 
-// handle description change
-onDescriptionChange: function(e) {
-    this.setState({description: e.target.value});
-},
- 
-// handle price change
-onPriceChange: function(e) {
-    this.setState({price: e.target.value});
-},
-onSave: function(e){
-    $.post("/product", {
-            name: this.state.name,
-            description: this.state.description,
-            price: this.state.price,
-            category_id: this.state.selectedCategoryId
-        },
-        function(res){
-            this.setState({successCreation: res});
-            this.setState({name: ""});
-            this.setState({description: ""});
-            this.setState({price: ""});
-            this.setState({selectedCategoryId: -1});
-        }.bind(this)
-    );
-    e.preventDefault();
-},
-render: function() {
- 
-    // make categories as option for the select tag.
-    var categoriesOptions = this.state.categories.map(function(category){
-        return (
-            <option key={category.id} value={category.id}>{category.name}</option>
-        );
-    });
- 
-    /*
-    - tell the user if a product was created
-    - tell the user if unable to create product
-    - button to go back to products list
-    - form to create a product
-    */
-    return (
-    <div>
-        {
- 
-            this.state.successCreation == "true" ?
-                <div className='alert alert-success'>
-                    Product was saved.
-                </div>
-            : null
-        }
- 
-        {
- 
-            this.state.successCreation == "false" ?
-                <div className='alert alert-danger'>
-                    Unable to save product. Please try again.
-                </div>
-            : null
-        }
- 
-        <a href='#'
-            onClick={() => this.props.changeAppMode('read')}
-            className='btn btn-primary margin-bottom-1em'> Read Products
-        </a>
- 
- 
-        <form onSubmit={this.onSave}>
-            <table className='table table-bordered table-hover'>
-            <tbody>
-                <tr>
-                    <td>Name</td>
-                    <td>
-                        <input
-                        type='text'
-                        className='form-control'
-                        value={this.state.name}
-                        required
-                        onChange={this.onNameChange} />
-                    </td>
-                </tr>
- 
-                <tr>
-                    <td>Description</td>
-                    <td>
-                        <textarea
-                        type='text'
-                        className='form-control'
-                        required
-                        value={this.state.description}
-                        onChange={this.onDescriptionChange}>
-                        </textarea>
-                    </td>
-                </tr>
- 
-                <tr>
-                    <td>Price ($)</td>
-                    <td>
-                        <input
-                        type='number'
-                        step="0.01"
-                        className='form-control'
-                        value={this.state.price}
-                        required
-                        onChange={this.onPriceChange}/>
-                    </td>
-                </tr>
- 
-                <tr>
-                    <td>Category</td>
-                    <td>
-                        <select
-                        onChange={this.onCategoryChange}
-                        className='form-control'
-                        value={this.state.selectedCategoryId}>
-                        <option value="-1">Select category...</option>
-                        {categoriesOptions}
-                        </select>
-                    </td>
-                </tr>
- 
-                <tr>
-                    <td></td>
-                    <td>
-                        <button
-                        className='btn btn-primary'
-                        onClick={this.onSave}>Save</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </form>
-    </div>
-    );
-}
+    	this.serverRequest.abort();
+	},
+	// handle category change
+	onCategoryChange: function(e) {
+	    this.setState({selectedCategoryId: e.target.value});
+	},
+	 
+	// handle name change
+	onNameChange: function(e) {
+	    this.setState({name: e.target.value});
+	},
+	 
+	// handle description change
+	onDescriptionChange: function(e) {
+	    this.setState({description: e.target.value});
+	},
+	 
+	// handle price change
+	onPriceChange: function(e) {
+	    this.setState({price: e.target.value});
+	},
+	onSave: function(e){
+	    $.post("/product", {
+	            name: this.state.name,
+	            description: this.state.description,
+	            price: this.state.price,
+	            category_id: this.state.selectedCategoryId
+	        },
+	        function(res){
+	            this.setState({successCreation: res});
+	            this.setState({name: ""});
+	            this.setState({description: ""});
+	            this.setState({price: ""});
+	            this.setState({selectedCategoryId: -1});
+	        }.bind(this)
+	    );
+	    e.preventDefault();
+	},
+	render: function() {
+	 
+	    // make categories as option for the select tag.
+	    var categoriesOptions = this.state.categories.map(function(category){
+	        return (
+	            <option key={category.id} value={category.id}>{category.name}</option>
+	        );
+	    });
+	 
+	    /*
+	    - tell the user if a product was created
+	    - tell the user if unable to create product
+	    - button to go back to products list
+	    - form to create a product
+	    */
+	    return (
+	    <div>
+	        {
+	 
+	            this.state.successCreation == "true" ?
+	                <div className='alert alert-success'>
+	                    Product was saved.
+	                </div>
+	            : null
+	        }
+	 
+	        {
+	 
+	            this.state.successCreation == "false" ?
+	                <div className='alert alert-danger'>
+	                    Unable to save product. Please try again.
+	                </div>
+	            : null
+	        }
+	 
+	        <a href='#'
+	            onClick={() => this.props.changeAppMode('read')}
+	            className='btn btn-primary margin-bottom-1em'> Read Products
+	        </a>
+	 
+	 
+	        <form onSubmit={this.onSave}>
+	            <table className='table table-bordered table-hover'>
+	            <tbody>
+	                <tr>
+	                    <td>Name</td>
+	                    <td>
+	                        <input
+	                        type='text'
+	                        className='form-control'
+	                        value={this.state.name}
+	                        required
+	                        onChange={this.onNameChange} />
+	                    </td>
+	                </tr>
+	 
+	                <tr>
+	                    <td>Description</td>
+	                    <td>
+	                        <textarea
+	                        type='text'
+	                        className='form-control'
+	                        required
+	                        value={this.state.description}
+	                        onChange={this.onDescriptionChange}>
+	                        </textarea>
+	                    </td>
+	                </tr>
+	 
+	                <tr>
+	                    <td>Price ($)</td>
+	                    <td>
+	                        <input
+	                        type='number'
+	                        step="0.01"
+	                        className='form-control'
+	                        value={this.state.price}
+	                        required
+	                        onChange={this.onPriceChange}/>
+	                    </td>
+	                </tr>
+	 
+	                <tr>
+	                    <td>Category</td>
+	                    <td>
+	                        <select
+	                        onChange={this.onCategoryChange}
+	                        className='form-control'
+	                        value={this.state.selectedCategoryId}>
+	                        <option value="-1">Select category...</option>
+	                        {categoriesOptions}
+	                        </select>
+	                    </td>
+	                </tr>
+	 
+	                <tr>
+	                    <td></td>
+	                    <td>
+	                        <button
+	                        className='btn btn-primary'
+	                        onClick={this.onSave}>Save</button>
+	                    </td>
+	                </tr>
+	                </tbody>
+	            </table>
+	        </form>
+	    </div>
+	    );
+	}
 });
 
 // component that renders a single product
@@ -588,48 +589,45 @@ var ReadProductsComponent = React.createClass({
 
 var MainApp = React.createClass({
 	getInitialState: function() {
-    return {
-        currentMode: 'read',
-        productId: null
-    };
-},
-changeAppMode: function(newMode, productId){
-    this.setState({currentMode: newMode});
- 
-    if(productId !== undefined){
-        this.setState({productId: productId});
-    }
-},
-render: function() {
- 
-    var modeComponent =
-        <ReadProductsComponent
-        changeAppMode={this.changeAppMode} />;
- 
-    switch(this.state.currentMode){
-        case 'read':
-            break;
-        case 'readOne':
-            modeComponent = <ReadOneProductComponent productId={this.state.productId} changeAppMode={this.changeAppMode}/>;
-            break;
-        case 'create':
-            modeComponent = <CreateProductComponent changeAppMode={this.changeAppMode}/>;
-            break;
-        case 'update':
-            modeComponent = <UpdateProductComponent productId={this.state.productId} changeAppMode={this.changeAppMode}/>;
-            break;
-        case 'delete':
-            modeComponent = <DeleteProductComponent productId={this.state.productId} changeAppMode={this.changeAppMode}/>;
-            break;
-        default:
-            break;
-    }
- 
-    return modeComponent;
-}
+	    return {
+	        currentMode: 'read',
+	        productId: null
+	    };
+	},
+	changeAppMode: function(newMode, productId){
+	    this.setState({currentMode: newMode});
+	 
+	    if(productId !== undefined){
+	        this.setState({productId: productId});
+	    }
+	},
+	render: function() {
+	 
+	    var modeComponent =
+	        <ReadProductsComponent
+	        changeAppMode={this.changeAppMode} />;
+	 
+	    switch(this.state.currentMode){
+	        case 'read':
+	            break;
+	        case 'readOne':
+	            modeComponent = <ReadOneProductComponent productId={this.state.productId} changeAppMode={this.changeAppMode}/>;
+	            break;
+	        case 'create':
+	            modeComponent = <CreateProductComponent changeAppMode={this.changeAppMode}/>;
+	            break;
+	        case 'update':
+	            modeComponent = <UpdateProductComponent productId={this.state.productId} changeAppMode={this.changeAppMode}/>;
+	            break;
+	        case 'delete':
+	            modeComponent = <DeleteProductComponent productId={this.state.productId} changeAppMode={this.changeAppMode}/>;
+	            break;
+	        default:
+	            break;
+	    }
+	 
+	    return modeComponent;
+	}
 });
 
-ReactDOM.render(
-	<MainApp />,
-	document.getElementById('content')
-	);
+ReactDOM.render(<MainApp />,document.getElementById('content'));
