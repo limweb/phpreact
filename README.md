@@ -5,5 +5,12 @@
 3. open browser   type http://127.0.0.1:8080
 
 
+if libs ใน vendor เสีย ไม่สามารถ run ได้ ให้ลบ 
+ vendor , composer.json composer.lock ออก แล้ว สร้างเองครับ 
+ 
+ composer init
+ composer require symfony/var-dumper
+ composer require illuminate/database
+
 
 
