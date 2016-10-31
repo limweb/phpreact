@@ -1,0 +1,17 @@
+
+@font-face {
+  font-family: 'Sukhumvit Set';
+  src: url('SukhumvitSet.eot'); /* IE9 Compat Modes */
+  src: url('SukhumvitSet.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('SukhumvitSet.woff') format('woff'), /* Modern Browsers */
+       url('SukhumvitSet.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('SukhumvitSet.svg#830de7a7354f0e0d71f11bc95ac50b90') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  200;
+}
+
+
+
+
+

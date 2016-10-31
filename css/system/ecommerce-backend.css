@@ -1,0 +1,417 @@
+/* Left Menu */
+.btndpheader {
+	padding: 25px 11px;
+}
+
+.tabcurrent {
+	width: 180px;
+}
+
+.btndpinline {
+	padding: 25px 0px 25px 20px;
+	width: 180px;
+}
+
+.btndpinline:hover {
+	width: 180px;
+}
+
+.sectionMenuDashboardWrap:before {
+	width: 180px;
+}
+
+/*End Left Menu */
+
+
+.dashboardPageMnmDetailContentSectionWrap select {
+	-webkit-appearance: menulist;
+    -moz-appearance: menulist;
+    appearance: menulist;
+}
+
+/*.sectionMenuDashboardWrap table thead:hover td{
+	background-color: #8c8c8c;
+	background: #8c8c8c;
+	background: -moz-linear-gradient(top,  #8c8c8c,  #8c8c8c);  
+}*/
+
+.sectionMenuDashboardWrap table tr:hover{
+	background-color: transparent;
+}
+
+.sectionMenuDashboardWrap table tr td:first-child {
+	text-align: none;
+	padding: 5px;
+	vertical-align: middle;
+}
+
+.btn {
+	padding: 6px 20px!important;
+}
+
+.btn-blue {
+	background: #2987d7!important;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 11px;
+}
+
+.btn-blue:hover {
+	background: rgba(41, 135, 215, 0.71)!important;
+}
+
+.dashboardPageCatalogProductFiltersWrap .floatleft select {
+	width: auto;
+}
+
+.dashboardPageCatalogProductContentWrap {
+	display: table;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    min-height: 1px!important;
+}
+
+
+/* detail customer */
+.box-detail {
+	background: #fff;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.box-detail .w-100-detail {
+	display:table;
+	width:100%;
+}
+
+.box-detail .w-50-detail {
+	display: inline-table;
+	width:50%;
+	padding: 0 10px;
+}
+
+/*.box-detail .w-100-detail .title-detail{
+	display:table-cell;
+	width: 100px;
+	font-weight: bold;
+}*/
+
+.header-title {
+	overflow: hidden;
+}
+
+.header-title select{
+	float: right;
+	width:45%;
+    padding: 2px 0px 2px 0px;
+    margin: 0;
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+    appearance: menulist;
+}
+
+.btn-w-100 {
+	width: 100%;
+    height: 40px;
+    background: #2987d7;
+    text-align: center;
+    color: #fff;
+    padding-top: 8px;
+    cursor: pointer;
+}
+
+.btn-w-100:hover, .search-customer div:hover {
+   /* background: #1966a7;*/
+    -webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	opacity: .5;
+}
+
+.sectionMenuDashboardWrap table th {
+	border-right: 1px solid #e0e0e0;
+}
+
+.sectionMenuDashboardWrap table tr td {
+	text-align: center;
+}
+
+.toolsEditFNContentWrap {
+	max-height: 460px;
+}
+
+
+
+.search-customer input{
+	text-align: center;
+    width: 80%;
+    float: left;
+    border-radius: 0;
+}
+
+.search-customer div{
+	background-color: #3a3a3a;
+    width: 30px;
+    height: 34px;
+    float: left;
+    padding: 7px 5px 5px 5px;
+    margin-top: 0px;
+}
+
+.search-customer div img {
+	width: 100%;
+}
+
+.edit-btn {
+	background-color: #fff;
+	padding: 0;
+	border-radius: 0;
+	cursor: pointer;
+}
+
+.dashboardPageTableContentDeleteBtn {
+	padding: 7px 9px;
+    border-radius: 14px;
+    font-size: 11px;
+}
+
+.grayBg-50 {
+	display: table-cell;
+	width: 49.5%;
+	background-color: #e1e1e1;
+	padding: 20px 10px;
+}
+
+.grayBg-50 .uploadImgFnImgWrap {
+	height: 150px;
+}
+
+.HeadMenu2 {
+	margin-left: 0;
+}
+
+.taballforhide {
+	width: 75%;
+    margin-left: 3%;
+    position: relative;
+}
+
+/*------------- Dash Board ---------------*/
+.dashbord-box_data {
+	width: calc(95%/5);
+	display: block;
+	min-width: 130px;
+	height: 100px;
+	text-align: center;
+	background-color: #ffffff;
+	font-size: 16px;
+	margin: 0 calc(2.5%/5) 10px calc(2.5%/5);
+	float: left;
+	border-radius: 3px;
+	border: 1px solid;
+}
+
+.dashbord-box_data h5 {
+	width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    color: #fff;
+}
+
+.dashbord-box_data p {
+	font-weight: bold;
+    font-size: 20px;
+    padding: 21px 0;
+}
+
+.dashbord-box_circle {
+	width: 34%;
+	float:left;
+	background-color: #177ca0;
+	border: #177ca0 1px solid;
+	margin: 5px 0.5% 5px 5px;
+}
+
+.dashbord-box_graph {
+	width: 64%;
+	float:left;
+	background-color: #177ca0;
+	border: #177ca0 1px solid;
+	margin: 5px 0 5px 0.5%;
+}
+
+/*------------- End Dash Board ---------------*/
+
+
+/* ----- Search -------*/
+.search-full-width {
+	width: 100%;
+    display: table;
+    padding: 20px;
+}
+
+.search-full-width input {
+	margin-right: 10px;
+} 
+
+.search-full-width select {
+	margin-right: 10px;
+}  
+
+.search-full-width div {
+	font-weight: bold;
+} 
+
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.btn-edit-onbggray {
+	position: absolute;
+    right: 9px;
+    top: 81px;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px 6px 2px 6px;
+    background: #f35642;
+    color: #fff;
+    border-radius: 7px;
+}
+
+	.btndpinline i {
+		display: none;
+	}
+
+	.btndpinline img {
+		display: none;
+	}
+
+	.btndpheader .fa {
+		/*margin-right: 10px;*/
+	}
+
+
+.dashboardDivHeadMenuWrap i {
+	font-size: 18px;
+    padding: 3px 0px 3px;
+}
+
+@media screen and (max-width: 1293px) and (min-width: 0px) {
+	.dashboardPageTableContentEditBtn {
+		display: inline-block;
+	    margin: 5px 0;
+	}
+
+
+
+}
+
+@media screen and (max-width: 1220px) and (min-width: 0px) {
+	/* Left Menu */
+	.sectionMenuDashboardWrap::before {
+		width: 60px;
+		position: fixed;
+    	z-index: 99;
+	}
+
+	.Menu-left {
+		text-align: left;
+	    width: 60px;
+	    background-color: #3a3a3a;
+	    position: fixed;
+    	z-index: 99;
+	}
+
+	.menuDashboardWrap {
+		position: fixed;
+		z-index: 99;
+	}
+
+	.btndpinline:hover {
+		width: 60px;
+	}
+
+	.btndpheader {
+		width: 60px;
+		text-align: center;
+	}
+
+	.btndpheader span {
+		display: none;
+	}
+
+	.btndpinline {
+		width: 60px;
+		padding: 20px 24px;
+		position: relative;
+		height: 70px;
+		line-height: 70px;
+	}
+
+	.btndpinline-2icon {
+		position: absolute;
+	} 
+
+	.btndpinline span {
+		display: none;
+	}
+
+	.btndpinline i {
+		display: block;
+		height: 30px;
+    	line-height: 30px;
+	}
+
+	.btndpinline img {
+		display: block;
+		width: 15px;
+	}
+
+	/*End Left Menu */
+
+	.btn-edit-onbggray {
+	    right: 40px;
+	    top: 81px;
+	}
+
+	.tabsearch {
+		height: 70px;
+	}
+
+	.tabContentAll,
+	.taballforhide {
+		width: calc(100% - 60px);
+	    margin-left: 60px;
+	    display: block;
+	    position: static;
+	    /*margin-top: -332px;*/
+	    float: none;
+	    padding: 0 20px;
+	}
+
+	.dashboardPageCatalogProductEditWrap {
+		width: 936px;
+	    margin-left: 90px;
+	    display: block;
+	    position: static;
+	    margin-right: 30px;
+	    float: none;
+	}
+
+	.dashboardPageTableContentEditBtn {
+		display: inline-block;
+	    margin: 5px 0;
+	}
+
+}

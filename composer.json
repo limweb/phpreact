@@ -1,0 +1,9 @@
+{
+    "name": "tlen/phprestfulserver",
+    "description": "PHP Restful Server",
+    "license": "MIT",
+    "require": {
+        "symfony/var-dumper": "^3.1",
+        "illuminate/database": "^5.3"
+    }
+}
