@@ -72,16 +72,23 @@ if ( ! function_exists( 'implodeKV' ) && ! function_exists('consolelog') ) {
     if($useDB) {
 
       $capsule = new Capsule;
+      
       $capsule->addConnection([
-          'driver'    => 'mysql',
-          'host'      => '127.0.0.1',
-          'database'  => 'test',
-          'username'  => 'root',
-          'password'  => '',
-          'charset'   => 'utf8',
-          'collation' => 'utf8_general_ci',
-          'prefix'    => '',
+        'driver' => 'sqlite',
+        'database' => __DIR__.'/data.db',
+        'prefix' => ''
       ],'default');
+
+      // $capsule->addConnection([
+      //     'driver'    => 'mysql',
+      //     'host'      => '127.0.0.1',
+      //     'database'  => 'test',
+      //     'username'  => 'root',
+      //     'password'  => '',
+      //     'charset'   => 'utf8',
+      //     'collation' => 'utf8_general_ci',
+      //     'prefix'    => '',
+      // ],'default');
 
       //use for multi database  you will check php.ini has enable your database driver  use phpinfo() to see.
       // $capsule->addConnection([
